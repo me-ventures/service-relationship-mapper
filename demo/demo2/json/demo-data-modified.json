@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "index": 0,
+      "links": [
+        1
+      ],
+      "score": 7.35923957824707,
+      "level": 3,
+      "title": "Blood Diamond",
+      "cover": "http://image.tmdb.org/t/p/w342/wRamTzV6udKaMXrspxqOuo02zk0.jpg",
+      "label": "Blood Diamond (2006)",
+      "director": "Edward Zwick",
+      "cast": "Leonardo DiCaprio, Djimon Hounsou, Jennifer Connelly, Arnold Vosloo, David Harewood, Jimi Mistry, Michael Sheen, Marius Weyers, Stephen Collins, Ato Essandoh",
+      "year": 2006,
+      "duration": "143 minutes",
+      "genre": "Action, Drama, Adventure, Thriller",
+      "id": 1768448
+    },
+    {
+      "index": 1,
+      "links": [
+        2
+      ],
+      "score": 7.167639255523682,
+      "level": 2,
+      "title": "Lonely Hearts",
+      "cover": "http://image.tmdb.org/t/p/w342/wxsyl5wjobtYhll3rf5nGuC4kBN.jpg",
+      "label": "Lonely Hearts (2006)",
+      "director": "Todd Robinson",
+      "cast": "John Travolta, James Gandolfini, Salma Hayek, Jared Leto, Laura Dern, Dan Byrd, Alice Krige, Dagmara Dominczyk, Bailee Madison",
+      "year": 2006,
+      "duration": "108 minutes",
+      "genre": "Drama, Romance, Thriller, Crime",
+      "id": 1758379
+    },
+    {
+
+      "index": 2,
+      "links": [
+
+      ],
+      "score": 7.167639255523682,
+      "level": 2,
+      "title": "Test Test",
+      "cover": "http://image.tmdb.org/t/p/w342/wxsyl5wjobtYhll3rf5nGuC4kBN.jpg",
+      "label": "Lonely Hearts (2006)",
+      "director": "Todd Robinson",
+      "cast": "John Travolta, James Gandolfini, Salma Hayek, Jared Leto, Laura Dern, Dan Byrd, Alice Krige, Dagmara Dominczyk, Bailee Madison",
+      "year": 2006,
+      "duration": "108 minutes",
+      "genre": "Drama, Romance, Thriller, Crime",
+      "id": 123
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1,
+      "weight": 1
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "weight": 1
+    }
+  ]
+}
+
