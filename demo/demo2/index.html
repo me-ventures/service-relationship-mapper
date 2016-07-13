@@ -5,24 +5,25 @@
 	<title>Demo 2</title>
 	<link rel="stylesheet" href="css/demo.css"/>
 	<script>
-		function takeAction() {
+		function init() {
 			// Load D3.js, and once loaded do our stuff
 			var head = document.getElementsByTagName('head')[0];
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.src = "http://d3js.org/d3.v3.min.js";
-			script.addEventListener('load', __renderServiceRelationshipMap, false);
-			script.onload = "__renderServiceRelationshipMap();";
+			script.addEventListener('load',
+				__mevServiceRelationshipMapper.renderEventFocusedMap,
+				false
+			);
 			head.appendChild(script);
 		}
 	</script>
 </head>
-<body onload="takeAction();">
 
+<body onload="init();">
+	<div id="service-relationship-map"></div>
 
-<div id="movieNetwork"></div>
-
-<script src="../../src/renderer/event-focused.js"></script>
-
+	<script src="../../src/renderer/event-focused.js"></script>
 </body>
+
 </html>
