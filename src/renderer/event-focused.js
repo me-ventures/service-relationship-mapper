@@ -5,9 +5,8 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 (function(){
     __mevServiceRelationshipMapper.renderEventFocusedMap = render;
 
-    function render() {
-
-        var elementId = '#service-relationship-map';
+    function render( params ) {
+        var element = params.element;
 
         // Some constants
         var WIDTH = 800,
@@ -40,7 +39,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
             .linkStrength( function(d,idx) { return d.weight; } );
 
         // Add to the page the SVG element that will contain the movie network
-        var svg = d3.select(elementId).append("svg:svg")
+        var svg = d3.select(element).append("svg:svg")
             .attr('xmlns','http://www.w3.org/2000/svg')
             .attr("width", WIDTH)
             .attr("height", HEIGHT)
