@@ -244,6 +244,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
                         html += renderName();
                         html += renderConsume();
+                        html += renderPublish();
 
 
                         html += '</table>';
@@ -275,6 +276,26 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                                 html += event.shared
                                     ? '<span class="shared">Shared</span>'
                                     : '<span class="not-shared">Not Shared</span>' ;
+                                html += '</p>'
+                            }
+
+                            html += '</tr>';
+
+                            return html;
+                        }
+
+                        function renderPublish(){
+                            var html = (
+                                '<tr>' +
+                                '<td>Publish</td>'
+                            );
+
+                            html += '<td>';
+                            var publishLength = data.publish.length;
+                            for( var i = 0; i < publishLength; i++ ){
+                                var event = data.publish[i];
+                                html += '<p>';
+                                html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
                                 html += '</p>'
                             }
 
