@@ -194,6 +194,19 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                     .scaleExtent([1, 6])
                     .on("zoom", doZoom) );
 
+
+                // arrow heads
+                svg.append("svg:defs").append("svg:marker")
+                    .attr("id", "triangle")
+                    .attr("refX", 55)
+                    .attr("refY", 6)
+                    .attr("markerWidth", 30)
+                    .attr("markerHeight", 30)
+                    .attr("orient", "auto")
+                    .append("path")
+                    .attr("d", "M 0 0 12 6 0 12 3 6")
+                    .style("fill", "black");
+
                 // ------- Create the elements of the layout (links and nodes) ------
 
                 var networkGraph = svg.append('svg:g').attr('class','grpParent');
@@ -204,7 +217,14 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                     .data(linkArray, function(d) {return d.source.id+'-'+d.target.id;} )
                     .enter().append("line")
                     .style('stroke-width', function(d) { return edge_width(d.weight);} )
-                    .attr("class", "link");
+                    .attr("class", "link")
+
+                        .attr("stroke", "black")
+                        .attr("marker-end", "url(#triangle)")
+                    ;
+
+
+
 
                 // nodes: an SVG circle
                 var graphNodes = networkGraph.append('svg:g').attr('class','grp gNodes')
