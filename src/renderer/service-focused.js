@@ -11,7 +11,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
         // Some constants
         var WIDTH = 800,
             HEIGHT = 600,
-            SHOW_THRESHOLD = 2.5;
+            SHOW_THRESHOLD = 1.1;
 
         // Variables keeping graph state
         var activeNode = undefined;
@@ -436,7 +436,14 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                 force.on("tick", function() {
                     repositionGraph(undefined,undefined,'tick');
                 });
+
+                // need to zoom to auto show labels
+                doZoom(0.2);
+
             });
+
+
+
 
     } // end of D3ok()
 
