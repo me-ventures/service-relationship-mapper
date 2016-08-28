@@ -1,6 +1,23 @@
 [
   {
     "service": {
+      "name": "product-aggregate-feeder"
+    },
+    "events": {
+      "consume": [
+
+      ],
+      "publish": [
+        {
+          "namespace": "product-identification",
+          "topic": "identification-updated",
+          "schema": ""
+        }
+      ]
+    }
+  },
+  {
+    "service": {
       "name": "product-aggregate"
     },
     "events": {
@@ -54,7 +71,30 @@
   },
   {
     "service": {
-      "name": "deals-detector"
+      "name": "good-deals-detector"
+    },
+    "events": {
+      "consume": [
+        {
+          "namespace": "historic-price-service",
+          "topic": "price-updated",
+          "shared": true,
+          "queueName": "deals-detector.price-updated",
+          "schema": ""
+        }
+      ],
+      "publish": [
+        {
+          "namespace": "deals-detector",
+          "topic": "hot-deals-active",
+          "schema": ""
+        }
+      ]
+    }
+  },
+  {
+    "service": {
+      "name": "bad-deals-detector"
     },
     "events": {
       "consume": [
