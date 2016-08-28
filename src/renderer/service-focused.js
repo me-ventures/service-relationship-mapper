@@ -34,7 +34,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
         // The D3.js force-directed layout
         var force = d3.layout.force()
-            .charge(-320)
+            .charge(-2000)
             .size( [WIDTH, HEIGHT] )
             .linkStrength( function(d,idx) { return d.weight; } );
 
