@@ -1,0 +1,80 @@
+[
+  {
+    "service": {
+      "name": "product-aggregate"
+    },
+    "events": {
+      "consume": [
+        {
+          "namespace": "product-identification-to-data-associator",
+          "topic": "data-identified",
+          "shared": true,
+          "queueName": "product-aggregate.data-identified",
+          "schema": ""
+        },
+        {
+          "namespace": "product-identification",
+          "topic": "identification-updated",
+          "shared": true,
+          "queueName": "product-aggregate.identification-updated",
+          "schema": ""
+        }
+      ],
+      "publish": [
+        {
+          "namespace": "product-aggregate",
+          "topic": "product-updated",
+          "schema": ""
+        }
+      ]
+    }
+  },
+  {
+    "service": {
+      "name": "historic-price-service"
+    },
+    "events": {
+      "consume": [
+        {
+          "namespace": "product-aggregate",
+          "topic": "product-updated",
+          "shared": true,
+          "queueName": "historic-price-service.product-updated",
+          "schema": ""
+        }
+      ],
+      "publish": [
+        {
+          "namespace": "historic-price-service",
+          "topic": "price-updated",
+          "schema": ""
+        }
+      ]
+    }
+  },
+  {
+    "service": {
+      "name": "deals-detector"
+    },
+    "events": {
+      "consume": [
+        {
+          "namespace": "historic-price-service",
+          "topic": "price-updated",
+          "shared": true,
+          "queueName": "deals-detector.price-updated",
+          "schema": ""
+        }
+      ],
+      "publish": [
+        {
+          "namespace": "deals-detector",
+          "topic": "hot-deals-active",
+          "schema": ""
+        }
+      ]
+    }
+  }
+
+
+]

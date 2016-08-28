@@ -72,12 +72,51 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
         }
 
 
+        function formatDataForD3( services ){
+            var formatted = {};
+
+            formatted.nodes = parseNodes(services);
+            formatted.links = createLinks(formatted.nodes);
+
+
+            function parseNodes( services ){
+                var nodes = [];
+
+                var servicesLength = services.length;
+                for( var i = 0; i < servicesLength; i++ ){
+                    var svc = services[i];
+
+                    nodes.push({
+                        index: i,
+                        title: svc.service.name,
+                        size: 9,
+                        // "level": 3,
+                        links: [],
+                        id: i
+                    });
+                }
+
+                return nodes;
+            }
+
+            function createLinks( nodes ){
+                var links = [];
+
+                return links;
+            }
+
+            return formatted;
+        }
+
+
 
         // *************************************************************************
 
         d3.json(
-            'json/demo-data-modified.json',
-            function(data) {
+            'json/server-output.json',
+            function(_data) {
+
+                var data = formatDataForD3(_data);
 
                 // Declare the variables pointing to the node & link arrays
                 var nodeArray = data.nodes;
@@ -132,7 +171,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                     .enter().append("svg:circle")
                     .attr('id', function(d) { return "c" + d.index; } )
                     .attr('class', function(d) { return 'node level'+d.level;} )
-                    .attr('r', function(d) { return node_size(d.score || 3); } )
+                    .attr('r', function(d) { return node_size(d.size || 3); } )
                     .attr('pointer-events', 'all')
                     //.on("click", function(d) { highlightGraphNode(d,true,this); } )
                     .on("click", function(d) {
