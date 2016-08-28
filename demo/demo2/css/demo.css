@@ -23,42 +23,36 @@ a:visited {
     color: blue;
 }
 
-/* ....................................................................... */
-/* The top-right side panel and its title child */
 
-div#sidepanel {
-    position: absolute;
-    pointer-events: none;
-    top: 0px;
-    right: 0px;
+#service-relationship-map {
+    display: inline-block;
+    width: 60%;
 }
 
-div#title {
-    margin: 4px 2px 6px 0px;
-    border-width: 0px;
-    padding: 0px;
-    text-align: right;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 18px;
-    color: #5D1D4D;
+
+#service-relationship-info {
+    display: inline-block;
+    width: 38%;
+
+    vertical-align: top;
+
+    background-color: cyan;
+
+    padding: 10px;
+}
+
+#service-relationship-info > table td:first-child {
     font-weight: bold;
-    pointer-events: none;
+    background-color: beige;
 }
 
-div#title img {
-    border-width: 0px;
-    margin: 0px;
+#service-relationship-info > table td {
+    vertical-align: top;
+
+    padding: 3px;
 }
 
 
-img#helpIcon {
-    position: absolute;
-    right: 6px;
-    top: 100px;
-    pointer-events: all;
-    cursor: help;
-}
 
 
 /* ....................................................................... */
