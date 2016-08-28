@@ -6,7 +6,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
     __mevServiceRelationshipMapper.renderEventFocusedMap = render;
 
     function render( params ) {
-        var element = params.element;
+        var mapElement = params.mapElement;
 
         // Some constants
         var WIDTH = 800,
@@ -39,7 +39,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
             .linkStrength( function(d,idx) { return d.weight; } );
 
         // Add to the page the SVG element that will contain the movie network
-        var svg = d3.select(element).append("svg:svg")
+        var svg = d3.select(mapElement).append("svg:svg")
             .attr('xmlns','http://www.w3.org/2000/svg')
             .attr("width", WIDTH)
             .attr("height", HEIGHT)
@@ -89,13 +89,14 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
                     nodes.push({
                         index: i,
-                        title: svc.service.name,
+                        label: svc.service.name,
                         size: 9,
                         links: [],
                         id: i,
 
-                        // needed for creating links
-                        consume: svc.events.consume
+                        // useful data
+                        consume: svc.events.consume,
+                        publish: svc.events.publish
                     });
 
                     // populate publish lookup with svc publish events
@@ -215,8 +216,55 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                     .attr('r', function(d) { return node_size(d.size || 3); } )
                     .attr('pointer-events', 'all')
                     //.on("click", function(d) { highlightGraphNode(d,true,this); } )
-                    .on("click", function(d) {
-                        console.log('on click event', d);
+                    .on("click", function(data) {
+
+                        var html = '';
+
+                        html += '<table>';
+
+                        html += renderName();
+                        html += renderConsume();
+
+
+                        html += '</table>';
+
+                        $(params.infoElement).html(html);
+
+
+                        function renderName(){
+                            return (
+                                '<tr>' +
+                                '<td>Name</td>' +
+                                '<td>' + data.label +'</td>' +
+                                '</tr>'
+                            );
+                        }
+
+                        function renderConsume(){
+                            var html = (
+                                '<tr>' +
+                                    '<td>Consume</td>'
+                            );
+
+                            html += '<td>';
+                            var consumeLength = data.consume.length;
+                            for( var i = 0; i < consumeLength; i++ ){
+                                var event = data.consume[i];
+                                html += '<p>';
+                                html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
+                                html += event.shared
+                                    ? '<span class="shared">Shared</span>'
+                                    : '<span class="not-shared">Not Shared</span>' ;
+                                html += '</p>'
+                            }
+
+                            html += '</tr>';
+
+                            return html;
+                        }
+
+                        console.log('on click event', data);
+
                     })
                     .on("mouseover", function(d) { highlightGraphNode(d,true,this);  } )
                     .on("mouseout",  function(d) { highlightGraphNode(d,false,this); } );

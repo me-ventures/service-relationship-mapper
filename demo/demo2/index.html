@@ -9,15 +9,21 @@
 			src="../../src/renderer/service-focused.js"></script>
 	<script type="application/javascript"
 			src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="application/javascript"
+			src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
 
 
 
 	<script type="application/javascript">
 		function init() {
-			var element = document.getElementById('service-relationship-map');
+			var mapElement = document.getElementById('service-relationship-map');
+			var infoElement = document.getElementById('service-relationship-info');
+
 
 			__mevServiceRelationshipMapper.renderEventFocusedMap({
-				element: element
+				mapElement: mapElement,
+				infoElement: infoElement
 			});
 		}
 	</script>
@@ -25,6 +31,7 @@
 
 <body onload="init();">
 	<div id="service-relationship-map"></div>
+	<div id="service-relationship-info"></div>
 </body>
 
 </html>
