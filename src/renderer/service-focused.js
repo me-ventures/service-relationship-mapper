@@ -74,6 +74,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
         function formatDataForD3( services ){
             var formatted = {};
+            var publishLookup = {};
 
             formatted.nodes = parseNodes(services);
             formatted.links = createLinks(formatted.nodes);
@@ -90,10 +91,24 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                         index: i,
                         title: svc.service.name,
                         size: 9,
-                        // "level": 3,
                         links: [],
-                        id: i
+                        id: i,
+
+                        // needed for creating links
+                        consume: svc.events.consume
                     });
+
+                    // populate publish lookup with svc publish events
+                    var publishLength = svc.events.publish.length;
+                    for( var j = 0; j < publishLength; j++ ){
+                        var event = svc.events.publish[j];
+
+                        if( typeof publishLookup[event.namespace + event.topic] !== 'object' ){
+                            publishLookup[event.namespace + event.topic] = [];
+                        }
+
+                        publishLookup[event.namespace + event.topic].push(i);
+                    }
                 }
 
                 return nodes;
@@ -101,6 +116,32 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
             function createLinks( nodes ){
                 var links = [];
+
+                var nodesLength = nodes.length;
+                for( var i = 0; i < nodesLength; i++ ){
+                    var node = nodes[i];
+
+                    var consumeLength = node.consume.length;
+                    for( var j = 0; j < consumeLength; j++ ){
+                        var event = node.consume[j];
+
+                        if( typeof publishLookup[event.namespace + event.topic] === 'object' ){
+                            var publishEvents = publishLookup[event.namespace + event.topic];
+
+                            var publishEventsLength = publishEvents.length;
+                            for( var k = 0; k < publishEventsLength; k++ ){
+                                var publishEventIdx = publishEvents[k];
+
+                                links.push({
+                                    source: publishEventIdx,
+                                    target: node.index,
+                                    weight: 1
+                                });
+                            }
+                        }
+                    }
+
+                }
 
                 return links;
             }
