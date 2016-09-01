@@ -90,7 +90,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                     nodes.push({
                         index: i,
                         label: svc.service.name,
-                        size: 9,
+                        size: 8,
                         links: [],
                         id: i,
 
