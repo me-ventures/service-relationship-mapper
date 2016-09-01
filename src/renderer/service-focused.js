@@ -9,8 +9,8 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
         var mapElement = params.mapElement;
 
         // Some constants
-        var WIDTH = 800,
-            HEIGHT = 600,
+        var WIDTH = 1200,
+            HEIGHT = 900,
             SHOW_THRESHOLD = 1.1;
 
         // Variables keeping graph state
