@@ -155,7 +155,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
         // *************************************************************************
 
         d3.json(
-            'json/server-output.json',
+            params.jsonSource,
             function(_data) {
 
                 var data = formatDataForD3(_data);
@@ -276,8 +276,17 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                                 html += event.shared
                                     ? '<span class="shared">Shared</span>'
                                     : '<span class="not-shared">Not Shared</span>' ;
+
+                                // example
+                                if( typeof event.example === 'object' ){
+                                    html += '<pre>';
+                                    html += JSON.stringify(event.example, null, 4);
+                                    html += '</pre>';
+                                }
+
                                 html += '</p>'
                             }
+                            html += '</td>';
 
                             html += '</tr>';
 
@@ -296,8 +305,17 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                                 var event = data.publish[i];
                                 html += '<p>';
                                 html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
+
+                                // example
+                                if( typeof event.example === 'object' ){
+                                    html += '<pre>';
+                                    html += JSON.stringify(event.example, null, 4);
+                                    html += '</pre>';
+                                }
+
                                 html += '</p>'
                             }
+                            html += '</td>';
 
                             html += '</tr>';
 
