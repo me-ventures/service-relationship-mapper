@@ -271,7 +271,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                             var consumeLength = data.consume.length;
                             for( var i = 0; i < consumeLength; i++ ){
                                 var event = data.consume[i];
-                                html += '<p>';
+                                html += '<div>';
                                 html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
                                 html += event.shared
                                     ? '<span class="shared">Shared</span>'
@@ -284,7 +284,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                                     html += '</pre>';
                                 }
 
-                                html += '</p>'
+                                html += '</div>';
                             }
                             html += '</td>';
 
@@ -303,7 +303,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                             var publishLength = data.publish.length;
                             for( var i = 0; i < publishLength; i++ ){
                                 var event = data.publish[i];
-                                html += '<p>';
+                                html += '<div>';
                                 html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
 
                                 // example
@@ -313,7 +313,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                                     html += '</pre>';
                                 }
 
-                                html += '</p>'
+                                html += '</div>'
                             }
                             html += '</td>';
 

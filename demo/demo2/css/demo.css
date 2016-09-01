@@ -52,7 +52,17 @@ a:visited {
     padding: 3px;
 }
 
+#service-relationship-info > table td div {
+    padding: 5px;
+}
 
+#service-relationship-info > table td div:nth-child(even) {
+    background-color: lightblue;
+}
+
+#service-relationship-info > table td div:nth-child(odd) {
+    background-color: lightgreen;
+}
 
 
 /* ....................................................................... */
