@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+line.link {
+    stroke: #B2D9D8;
+}
+
+circle {
+    cursor: crosshair;
+    fill: #EBC763;
+}
+
+circle.level1 {
+    stroke: #f00;
+}
+
+circle.level2 {
+    fill-opacity: 0.8;
+    stroke-opacity: 0.8;
+    stroke: #777;
+}
+
+circle.level3 {
+    fill-opacity: 0.5;
+    stroke-opacity: 0.5;
+}
+
+circle.sibling {
+    /*fill: blue;*/
+    fill: #455EE8;
+}
+
+circle.main {
+    /*fill: red;*/
+    fill: #732A9A;
+    fill-opacity: 1.0;
+}

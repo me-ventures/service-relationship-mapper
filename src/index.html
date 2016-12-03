@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ServiceRelationshipMapper</title>
+  <base href="/">
+
+  <script type="application/javascript"
+          src="http://d3js.org/d3.v3.min.js"></script>
+  <script type="application/javascript"
+          src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script type="application/javascript">
+    function init() {
+      var mapElement = document.getElementById('service-relationship-map');
+      var infoElement = document.getElementById('service-relationship-info');
+
+
+      __mevServiceRelationshipMapper.renderEventFocusedMap({
+        mapElement: mapElement,
+        infoElement: infoElement,
+        jsonSource: 'http://localhost:3000/relationship'
+      });
+
+      console.log('init');
+    }
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body onload="init();">
+  <app>Loading...</app>
+</body>
+
+
+
+</html>
