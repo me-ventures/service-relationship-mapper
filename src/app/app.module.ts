@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './component/app/app.component';
 import { ServiceMapComponent } from './component/service-map/service-map.component';
 import {ServiceInfoComponent} from "./component/service-info/service-info.component";
+import {RelationshipsService} from "./service/RelationshipsService";
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import {ServiceInfoComponent} from "./component/service-info/service-info.compon
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+      RelationshipsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
