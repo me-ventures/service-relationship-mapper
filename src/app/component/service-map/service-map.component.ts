@@ -274,7 +274,7 @@ export class ServiceMapComponent implements OnInit {
                     return html;
                 }
 
-                console.log('on click event', data);
+                //console.log('on click event', data);
 
             })
             .on("mouseover", function(d) { highlightGraphNode(d,true);  } )
@@ -292,6 +292,8 @@ export class ServiceMapComponent implements OnInit {
         let shadows = graphLabels.append('svg:text')
             .attr('x','-2em')
             .attr('y','-.3em')
+            .attr('stroke', 'white')
+            .attr('stroke-width', '0.2em')
             .attr('pointer-events', 'none') // they go to the circle beneath
             .attr('id', function(d) { return "lb" + d.index; } )
             .attr('class','nshadow')
@@ -304,6 +306,7 @@ export class ServiceMapComponent implements OnInit {
             .attr('id', function(d) { return "lf" + d.index; } )
             .attr('class','nlabel')
             .text( function(d) { return d.label; } );
+
 
         /* --------------------------------------------------------------------- */
         /* Select/unselect a node in the network graph.
