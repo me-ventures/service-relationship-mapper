@@ -50,6 +50,11 @@ export class ServiceMapComponent implements OnInit {
             })
     }
 
+    public refreshServiceData() : void {
+        this.relationshipService.refreshServicesData();
+    }
+
+
     private renderMap() : void {
 
         let params = {
@@ -88,6 +93,9 @@ export class ServiceMapComponent implements OnInit {
                 return 1;
             });
 
+
+        // make sure container is empty before rendering
+        $('#service-relationship-map').empty();
 
         // Add to the page the SVG element that will contain the service map
         let svg = d3.select(document.getElementById('service-relationship-map'))

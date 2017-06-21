@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./service-info.component.css']
 })
 export class ServiceInfoComponent {
-    title = 'app works!';
+
 }
