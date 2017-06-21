@@ -53,6 +53,7 @@ export interface ServiceDataEvent {
     namespace: string,
     queueName: string,
     schema: string,
-    shared: boolean,
-    topic: string
+    shared ?: boolean,
+    topic: string,
+    example: {[index: string]: any}
 }
