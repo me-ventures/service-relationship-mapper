@@ -150,6 +150,45 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
             return formatted;
         }
 
+        function combineDuplicateServices ( services ) {
+            var combined = [];
+
+            services.forEach(function(service){
+                var preExistingSearch = combined.filter(function(x){
+                    return x.service.name === service.service.name;
+                });
+
+                if ( ! preExistingSearch.length ) {
+                    combined.push(service);
+                }
+
+                else {
+                    var preExisting = preExistingSearch[0];
+
+                    service.events.consume.forEach(function(event){
+                        var search = preExisting.events.consume.filter(function(x){
+                            return x.namespace + x.topic === event.namespace + event.topic;
+                        });
+
+                        if ( ! search.length ) {
+                            preExisting.events.consume.push(event);
+                        }
+                    });
+
+                    service.events.publish.forEach(function(event){
+                        var search = preExisting.events.publish.filter(function(x){
+                            return x.namespace + x.topic === event.namespace + event.topic;
+                        });
+
+                        if ( ! search.length ) {
+                            preExisting.events.publish.push(event);
+                        }
+                    });
+                }
+            });
+
+            return combined;
+        }
 
 
         // *************************************************************************
@@ -157,6 +196,8 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
         d3.json(
             params.jsonSource,
             function(_data) {
+
+                _data = combineDuplicateServices(_data);
 
                 var data = formatDataForD3(_data);
 
