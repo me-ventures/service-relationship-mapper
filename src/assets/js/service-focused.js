@@ -321,7 +321,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                             var consumeLength = data.consume.length;
                             for( var i = 0; i < consumeLength; i++ ){
                                 var event = data.consume[i];
-                                html += '<div>';
+                                html += '<div class="event-consume">';
                                 html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
                                 html += event.shared
                                     ? '<span class="shared">Shared</span>'
@@ -329,7 +329,7 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
 
                                 // example
                                 if( typeof event.example === 'object' ){
-                                    html += '<pre>';
+                                    html += '<pre style="background-color: lightgreen;">';
                                     html += escapeHtml(JSON.stringify(event.example, null, 4));
                                     html += '</pre>';
                                 }
@@ -353,12 +353,12 @@ if( typeof __mevServiceRelationshipMapper !== 'object' ){
                             var publishLength = data.publish.length;
                             for( var i = 0; i < publishLength; i++ ){
                                 var event = data.publish[i];
-                                html += '<div>';
+                                html += '<div class="event-publish">';
                                 html += '<strong>' + event.namespace + '.' + event.topic + '</strong><br />';
 
                                 // example
                                 if( typeof event.example === 'object' ){
-                                    html += '<pre>';
+                                    html += '<pre style="background-color: lightblue;">';
                                     html += escapeHtml(JSON.stringify(event.example, null, 4));
                                     html += '</pre>';
                                 }
